@@ -1,29 +1,41 @@
+import React, { useEffect, useState, useRef } from "react";
 import { Bell } from "lucide-react";
-import React, { useState, useRef, useEffect } from "react";
+import { connectWebSocket, disconnectWebSocket } from "../APIs/WebSocket";
+import { fetchUser } from "../APIs/userApi";
 
 const UpdateBox = () => {
-  const [updates, setUpdates] = useState([
-    {
-      id: 1,
-      text: "Document title was changed to 'Project Plan'",
-      time: "09:45 AM",
-    },
-    {
-      id: 2,
-      text: "John added a new section: 'Research Findings'",
-      time: "10:10 AM",
-    },
-  ]);
-  
+  const [updates, setUpdates] = useState([{
+    id: 1,
+    text: "No updates yet",
+    time: new Date().toLocaleTimeString(),
+  }]);
   const bottomRef = useRef(null);
 
-  // Auto-scroll down on new updates
+  useEffect(() => {
+    // Connect and listen
+    connectWebSocket(async (update) => {
+      const user = await fetchUser();
+      const updateText = `Document "${update.name}" updated by user ${user.data.name}`;
+      const updateTime = new Date().toLocaleTimeString();
+
+      setUpdates((prev) => [
+        ...prev,
+        { id: Date.now(), text: updateText, time: updateTime },
+      ]);
+    });
+
+    return () => {
+      disconnectWebSocket();
+    };
+  }, []);
+
+  // Auto-scroll down
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [updates]);
 
   return (
-    <aside className="rounded-lg border bg-white/80 shadow-sm flex flex-col h-56 ">
+    <aside className="rounded-lg border bg-white/80 shadow-sm flex flex-col h-56">
       {/* Header */}
       <div className="flex items-center justify-between border-b px-3 py-2">
         <div className="text-sm font-semibold">Updates</div>

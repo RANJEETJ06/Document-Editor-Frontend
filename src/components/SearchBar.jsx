@@ -1,7 +1,7 @@
 import React from "react";
 import { FiSearch } from "react-icons/fi"; // Feather icon for search
 
-const SearchBar = ({ placeholder = "Search documents..." }) => {
+const SearchBar = ({ placeholder = "Search documents", onChange }) => {
   return (
     <div className="w-full max-w mx-auto">
       <div className="relative">
@@ -11,6 +11,7 @@ const SearchBar = ({ placeholder = "Search documents..." }) => {
         <input
           type="text"
           placeholder={placeholder}
+          onChange={(e) => onChange(e.target.value)}
           className="w-full bg-white border border-gray-300 rounded-xl py-3 pl-10 pr-4 text-gray-700 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent shadow-sm transition-all duration-200"
         />
       </div>

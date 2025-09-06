@@ -10,10 +10,10 @@ const NotFound = () => {
         Sorry, the page you are looking for does not exist.
       </p>
       <Link
-        to="/"
+        to="/Login"
         className="mt-6 px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
       >
-        Go Back Home
+        Login Again
       </Link>
     </div>
   );
