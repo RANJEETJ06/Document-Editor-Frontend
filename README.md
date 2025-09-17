@@ -64,7 +64,7 @@ The project follows a **microservices-based architecture**, with independent ser
 
 ```mermaid
 flowchart TD
-    Client[Frontend / API Consumer] --> |HTTP Requests|[Gateway Server]
+    Client[Frontend / API Consumer] --> Gateway[Gateway Server]
     Gateway --> UserService[User Service]
     Gateway --> DocumentService[Document Service]
     Gateway --> CommService[Communication Service]
