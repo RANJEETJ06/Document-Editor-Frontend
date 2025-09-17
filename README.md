@@ -1,70 +1,71 @@
-# Getting Started with Create React App
+# 📑 Document Editor – Full Stack Project (React + Spring Boot Microservices)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A **collaborative Document Editing Platform** built with **React (frontend)** and **Spring Boot Microservices (backend)**.  
+The system allows users to **create, edit, share, and collaborate** on documents in real time, with secure authentication and an API gateway for centralized access.
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## 🌐 Project Overview
 
-### `npm start`
+- **Frontend (React)**  
+  - Built with React.js for a modern, responsive UI.  
+  - Provides user-friendly interfaces for authentication, document editing, and real-time collaboration.  
+  - Communicates with backend services through the **Gateway API**.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Backend (Spring Boot Microservices)**  
+  - Organized into 4 independent services:
+    1. **User Service** → Manages authentication & profiles  
+    2. **Document Service** → Handles document CRUD & storage  
+    3. **Communication Service** → Enables real-time chat & notifications  
+    4. **Gateway Server** → Central API Gateway for routing & security  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
+This repository represents the **backend microservices** for the **Document Editor System**.  
+The system is built using **Spring Boot Microservices**, connected through **API Gateway** and enabling secure and scalable document collaboration.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Microservices Overview
 
-### `npm run build`
+The project follows a **microservices-based architecture**, with independent services handling specific features.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1️⃣ [User Service](https://github.com/RANJEETJ06/Document-Backend-User)🔗
+- Handles user registration, authentication, and profile management.
+- Implements **Spring Security + JWT Authentication**.
+- Provides APIs for managing users and their access roles.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2️⃣ [Document Service](https://github.com/RANJEETJ06/Document-Backend-Document)🔗
+- Manages document creation, storage, updates, and retrieval.
+- Supports **CRUD operations** for documents.
+- Integrates with file system / cloud storage for persistence.
+- Handles metadata such as titles, authors, timestamps.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3️⃣ [Communication Service](https://github.com/RANJEETJ06/Document-Editor-Communication)🔗
+- Enables **real-time communication** for collaborative document editing.
+- Provides messaging and notification features.
+- Uses **WebSocket / Messaging Queue** for live updates.
+- Ensures smooth collaboration between multiple users.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 4️⃣ [Gateway Server](https://github.com/RANJEETJ06/Document-Editor-GatewayServer)🔗
+- Acts as the **API Gateway** for all microservices.
+- Routes external requests to the respective services.
+- Handles **load balancing, security, and centralized access control**.
+- Provides a **single entry point** to the backend system.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
+## 🏗️ System Architecture
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```mermaid
+flowchart TD
+    Client[Frontend / API Consumer] --> |HTTP Requests|[Gateway Server]
+    Gateway --> UserService[User Service]
+    Gateway --> DocumentService[Document Service]
+    Gateway --> CommService[Communication Service]
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
