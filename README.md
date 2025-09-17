@@ -31,7 +31,7 @@ The project follows a **microservices-based architecture**, with independent ser
 
 ### 1️⃣ [User Service](https://github.com/RANJEETJ06/Document-Backend-User)🔗
 - Handles user registration, authentication, and profile management.
-- Implements **Spring Security + JWT Authentication**.
+- Implements **Spring Security + OAuth 2.0 Authentication**.
 - Provides APIs for managing users and their access roles.
 
 ---
@@ -41,13 +41,14 @@ The project follows a **microservices-based architecture**, with independent ser
 - Supports **CRUD operations** for documents.
 - Integrates with file system / cloud storage for persistence.
 - Handles metadata such as titles, authors, timestamps.
+- Include WebSocket for live document handling.
 
 ---
 
 ### 3️⃣ [Communication Service](https://github.com/RANJEETJ06/Document-Editor-Communication)🔗
 - Enables **real-time communication** for collaborative document editing.
 - Provides messaging and notification features.
-- Uses **WebSocket / Messaging Queue** for live updates.
+- Uses **WebSocket** for live updates.
 - Ensures smooth collaboration between multiple users.
 
 ---
@@ -55,7 +56,7 @@ The project follows a **microservices-based architecture**, with independent ser
 ### 4️⃣ [Gateway Server](https://github.com/RANJEETJ06/Document-Editor-GatewayServer)🔗
 - Acts as the **API Gateway** for all microservices.
 - Routes external requests to the respective services.
-- Handles **load balancing, security, and centralized access control**.
+- Handles **security, and centralized access control**.
 - Provides a **single entry point** to the backend system.
 
 ---
